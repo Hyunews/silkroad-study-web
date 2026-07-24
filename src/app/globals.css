@@ -18,4 +18,146 @@
     border-color: rgba(99, 102, 241, 0.4);
     box-shadow: 0 20px 30px -10px rgba(99, 102, 241, 0.15);
   }
+
+  /* Enterprise Beautiful HTML Render Engine Styles */
+  .html-render-engine h1 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-top: 2rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #1e293b;
+  }
+
+  .html-render-engine h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 800;
+    color: #e0e7ff;
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
+    border-left: 4px solid #6366f1;
+    padding-left: 1rem;
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
+    background-color: rgba(99, 102, 241, 0.1);
+    border-top-right-radius: 0.75rem;
+    border-bottom-right-radius: 0.75rem;
+  }
+
+  .html-render-engine h3 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+    color: #f8fafc;
+    margin-top: 1.75rem;
+    margin-bottom: 0.875rem;
+  }
+
+  .html-render-engine p {
+    font-size: 1.125rem;
+    line-height: 2rem;
+    color: #cbd5e1;
+    margin-bottom: 1.25rem;
+    display: block;
+  }
+
+  .html-render-engine ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .html-render-engine ol {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .html-render-engine li {
+    font-size: 1.05rem;
+    line-height: 1.8rem;
+    color: #e2e8f0;
+    margin-bottom: 0.5rem;
+  }
+
+  .html-render-engine table {
+    width: 100%;
+    margin-top: 1.75rem;
+    margin-bottom: 2rem;
+    border-collapse: collapse;
+    border-radius: 1rem;
+    overflow: hidden;
+    background-color: rgba(15, 23, 42, 0.9);
+    border: 1px solid #1e293b;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  }
+
+  .html-render-engine th {
+    background-color: #1e293b;
+    color: #a5b4fc;
+    padding: 0.875rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: left;
+    border-bottom: 1px solid #334155;
+  }
+
+  .html-render-engine td {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.95rem;
+    color: #e2e8f0;
+    border-bottom: 1px solid rgba(30, 41, 59, 0.8);
+  }
+
+  .html-render-engine tr:hover {
+    background-color: rgba(30, 41, 59, 0.5);
+  }
+
+  .html-render-engine code {
+    background-color: #151c2e;
+    color: #a5b4fc;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.375rem;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .html-render-engine pre {
+    background-color: #080b12;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid #1e293b;
+    overflow-x: auto;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  }
+
+  .html-render-engine pre code {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    color: #e0e7ff;
+  }
+
+  .html-render-engine blockquote {
+    background-color: rgba(30, 27, 75, 0.4);
+    border-left: 4px solid #818cf8;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    padding: 1.25rem 1.5rem;
+    border-radius: 1rem;
+    color: #e0e7ff;
+    font-style: italic;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
 }

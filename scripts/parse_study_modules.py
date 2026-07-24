@@ -10,11 +10,24 @@ def clean_html_tags(raw_html):
     clean = re.sub(r'\s+', ' ', clean).strip()
     return clean
 
+def extract_body_content(raw_html):
+    body_match = re.search(r'<body[^>]*>(.*?)</body>', raw_html, re.IGNORECASE | re.DOTALL)
+    if body_match:
+        return body_match.group(1).strip()
+    return raw_html.strip()
+
 def parse_html_files():
     os.makedirs(os.path.dirname(OUTPUT_JSON), exist_ok=True)
     modules = []
 
     files = [f for f in os.listdir(SOURCE_DIR) if f.endswith(".html")]
+
+    # Read style.css if exists
+    css_path = os.path.join(SOURCE_DIR, "style.css")
+    style_css = ""
+    if os.path.exists(css_path):
+        with open(css_path, "r", encoding="utf-8", errors="ignore") as f:
+            style_css = f.read()
 
     for filename in sorted(files):
         filepath = os.path.join(SOURCE_DIR, filename)
@@ -24,7 +37,7 @@ def parse_html_files():
         title_match = re.search(r'<title>(.*?)</title>', content, re.IGNORECASE | re.DOTALL)
         title = title_match.group(1).strip() if title_match else filename
 
-        h1_match = re.search(r'<h1>(.*?)</h1>', content, re.IGNORECASE | re.DOTALL)
+        h1_match = re.search(r'<h1[^>]*>(.*?)</h1>', content, re.IGNORECASE | re.DOTALL)
         main_title = clean_html_tags(h1_match.group(1)) if h1_match else title
 
         module_id = os.path.splitext(filename)[0]
@@ -47,12 +60,15 @@ def parse_html_files():
         code_blocks = re.findall(r'<code[^>]*>(.*?)</code>', content, re.IGNORECASE | re.DOTALL)
         clean_code_blocks = [clean_html_tags(c) for c in code_blocks if len(clean_html_tags(c)) > 5]
 
+        body_html = extract_body_content(content)
+
         modules.append({
             "id": module_id,
             "filename": filename,
             "title": main_title,
             "category": category,
             "summary": summary[:160],
+            "body_html": body_html,
             "full_html": content,
             "code_snippets": clean_code_blocks[:5]
         })
@@ -60,7 +76,7 @@ def parse_html_files():
     with open(OUTPUT_JSON, "w", encoding="utf-8") as f:
         json.dump(modules, f, ensure_ascii=False, indent=2)
 
-    print(f"Parsed {len(modules)} HTML modules successfully into {OUTPUT_JSON}")
+    print(f"Re-parsed {len(modules)} updated HTML modules successfully into {OUTPUT_JSON}")
 
 if __name__ == "__main__":
     parse_html_files()
