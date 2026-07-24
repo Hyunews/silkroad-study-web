@@ -18,13 +18,26 @@
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   color: var(--text-main);
   line-height: 1.6;
+  width: 100%;
 }
 
+.original-html-scope a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.original-html-scope a:hover {
+  text-decoration: underline;
+  color: #7dd3fc;
+}
+
+/* Original Header Banner */
 .original-html-scope .header-banner {
   background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98));
   border: 1px solid var(--border-color);
   border-radius: 0.75rem;
-  padding: 2rem;
+  padding: 1.75rem 2rem;
   margin-bottom: 2rem;
   position: relative;
   overflow: hidden;
@@ -39,14 +52,17 @@
   pointer-events: none;
 }
 
-.original-html-scope .module-title {
-  font-size: 2rem;
+.original-html-scope .module-title,
+.original-html-scope h1 {
+  font-size: 1.85rem;
   font-weight: 800;
   color: var(--text-main);
   display: flex;
   align-items: center;
   gap: 0.75rem;
   flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+  border-bottom: none;
 }
 
 .original-html-scope .module-code-pill {
@@ -54,8 +70,9 @@
   color: #fff;
   padding: 0.25rem 0.75rem;
   border-radius: 0.5rem;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
+  display: inline-block;
 }
 
 .original-html-scope .module-desc {
@@ -65,7 +82,7 @@
   line-height: 1.7;
 }
 
-/* Grid & Cards */
+/* Original Grid & Cards */
 .original-html-scope .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -115,30 +132,37 @@
 .original-html-scope .tag-print { background-color: rgba(16, 185, 129, 0.15); color: var(--accent-green); }
 .original-html-scope .tag-code { background-color: rgba(245, 158, 11, 0.15); color: var(--accent-amber); }
 
-/* Parameter & Variables Table */
-.original-html-scope table.data-table {
+/* Data Tables */
+.original-html-scope table.data-table,
+.original-html-scope table {
   width: 100%;
   border-collapse: collapse;
-  margin: 1rem 0;
+  margin: 1.25rem 0;
   font-size: 0.875rem;
   border-radius: 0.5rem;
   overflow: hidden;
+  border: 1px solid var(--border-color);
+  background-color: #0f172a;
 }
 
 .original-html-scope table.data-table th, 
-.original-html-scope table.data-table td {
-  padding: 0.65rem 0.85rem;
+.original-html-scope table.data-table td,
+.original-html-scope table th,
+.original-html-scope table td {
+  padding: 0.75rem 0.9rem;
   text-align: left;
   border-bottom: 1px solid var(--border-color);
 }
 
-.original-html-scope table.data-table th {
-  background-color: #0f172a;
+.original-html-scope table.data-table th,
+.original-html-scope table th {
+  background-color: #1e293b;
   color: var(--accent-cyan);
-  font-weight: 600;
+  font-weight: 700;
 }
 
-.original-html-scope table.data-table tr:hover {
+.original-html-scope table.data-table tr:hover,
+.original-html-scope table tr:hover {
   background-color: rgba(255, 255, 255, 0.03);
 }
 
@@ -148,12 +172,12 @@
   background-color: var(--code-bg);
   border: 1px solid var(--border-color);
   border-radius: 0.5rem;
-  padding: 1rem 1.25rem;
+  padding: 1.25rem;
   overflow-x: auto;
   font-family: 'Fira Code', monospace;
   font-size: 0.875rem;
   color: #e2e8f0;
-  margin: 1rem 0;
+  margin: 1.25rem 0;
   line-height: 1.6;
 }
 
@@ -164,15 +188,15 @@
 .original-html-scope .comment { color: #64748b; font-style: italic; }
 
 .original-html-scope h2 {
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 700;
   color: var(--accent-cyan);
-  margin-top: 1.5rem;
+  margin-top: 1.75rem;
   margin-bottom: 1rem;
 }
 
 .original-html-scope h3 {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: #f1f5f9;
   margin-top: 1.25rem;
@@ -183,14 +207,15 @@
   margin-bottom: 1rem;
   color: var(--text-main);
   font-size: 0.975rem;
+  line-height: 1.7;
 }
 
 .original-html-scope ul, .original-html-scope ol {
   padding-left: 1.25rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
 .original-html-scope li {
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.4rem;
   color: var(--text-main);
 }

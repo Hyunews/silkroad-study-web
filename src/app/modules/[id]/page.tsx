@@ -57,7 +57,7 @@ export default async function ModuleDetailPage({ params }: Props) {
             실크로드 학습 포털 메인으로 돌아가기
           </Link>
           <span className="px-3.5 py-1.5 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 text-xs font-mono font-bold">
-            {mod.id}.html (Original 1:1 Render)
+            {mod.id}.html (Normalized 1:1 Render)
           </span>
         </div>
 
@@ -107,17 +107,12 @@ export default async function ModuleDetailPage({ params }: Props) {
             </div>
           </aside>
 
-          {/* Right Main Post Content (9-Cols) - 1:1 Original HTML Render */}
-          <article className="lg:col-span-9 glass-card rounded-3xl p-6 sm:p-10 border border-slate-800 shadow-2xl space-y-6">
-            <div className="flex items-center gap-2 text-xs font-bold text-indigo-400 uppercase tracking-wider pb-2 border-b border-slate-800">
-              <Sparkles className="w-4 h-4 text-indigo-400" />
-              {mod.category}
-            </div>
-
-            {/* Render 1:1 Original HTML Content with original-html-scope */}
+          {/* Right Main Content (9-Cols) - Exact 1:1 Normalized Original Render */}
+          <article className="lg:col-span-9 glass-card rounded-3xl p-6 sm:p-10 border border-slate-800 shadow-2xl">
+            {/* Render 1:1 Normalized Original HTML Content with original-html-scope */}
             <div
               className="original-html-scope"
-              dangerouslySetInnerHTML={{ __html: mod.body_html || mod.full_html }}
+              dangerouslySetInnerHTML={{ __html: mod.main_html || mod.full_html }}
             />
           </article>
         </div>
