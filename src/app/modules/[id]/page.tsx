@@ -1,7 +1,8 @@
 import { getModuleById, getAllModules } from "@/lib/modules";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, FileCode, Code2, Sparkles, FolderOpen, ChevronRight } from "lucide-react";
+import { ArrowLeft, Sparkles, FolderOpen, ChevronRight } from "lucide-react";
+import "./original-style.css";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -56,7 +57,7 @@ export default async function ModuleDetailPage({ params }: Props) {
             실크로드 학습 포털 메인으로 돌아가기
           </Link>
           <span className="px-3.5 py-1.5 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 text-xs font-mono font-bold">
-            {mod.id}.html
+            {mod.id}.html (Original 1:1 Render)
           </span>
         </div>
 
@@ -94,7 +95,7 @@ export default async function ModuleDetailPage({ params }: Props) {
                                   isCurrent ? "text-white" : "text-slate-500"
                                 }`}
                               />
-                              <span className="truncate">{m.id} ({m.title.slice(0, 15)})</span>
+                              <span className="truncate">{m.id} ({m.title.slice(0, 14)})</span>
                             </Link>
                           </li>
                         );
@@ -106,59 +107,18 @@ export default async function ModuleDetailPage({ params }: Props) {
             </div>
           </aside>
 
-          {/* Right Main Post Content (9-Cols) */}
-          <article className="lg:col-span-9 glass-card rounded-3xl p-6 sm:p-10 md:p-14 border border-slate-800 shadow-2xl space-y-8">
-            {/* Header Info */}
-            <div className="space-y-4 border-b border-slate-800 pb-8">
-              <div className="flex items-center gap-2 text-xs font-bold text-indigo-400 uppercase tracking-wider">
-                <Sparkles className="w-4 h-4 text-indigo-400" />
-                {mod.category}
-              </div>
-              <h1 className="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
-                {mod.title}
-              </h1>
-              <div className="p-4 rounded-xl bg-slate-900/90 border border-indigo-500/30 text-slate-200 text-sm sm:text-base leading-relaxed italic border-l-4 border-l-indigo-500 shadow-md">
-                "{mod.summary}"
-              </div>
+          {/* Right Main Post Content (9-Cols) - 1:1 Original HTML Render */}
+          <article className="lg:col-span-9 glass-card rounded-3xl p-6 sm:p-10 border border-slate-800 shadow-2xl space-y-6">
+            <div className="flex items-center gap-2 text-xs font-bold text-indigo-400 uppercase tracking-wider pb-2 border-b border-slate-800">
+              <Sparkles className="w-4 h-4 text-indigo-400" />
+              {mod.category}
             </div>
 
-            {/* High Visual HTML Content Render Engine */}
-            <div className="space-y-6">
-              <div className="flex items-center gap-2 text-sm font-bold text-indigo-300 uppercase tracking-wider pb-3 border-b border-slate-800">
-                <FileCode className="w-4.5 h-4.5 text-indigo-400" />
-                📌 실크로드 모듈 원본 시각화 문맥 (HTML Engine Rendered)
-              </div>
-
-              {/* Render with html-render-engine classes */}
-              <div
-                className="html-render-engine bg-slate-950/80 p-6 sm:p-10 rounded-2xl border border-slate-800/90 shadow-inner"
-                dangerouslySetInnerHTML={{ __html: mod.body_html || mod.full_html }}
-              />
-            </div>
-
-            {/* Extracted Code Snippets */}
-            {mod.code_snippets && mod.code_snippets.length > 0 && (
-              <div className="space-y-4 pt-6 border-t border-slate-800">
-                <div className="flex items-center gap-2 text-sm font-bold text-indigo-300 uppercase tracking-wider">
-                  <Code2 className="w-4.5 h-4.5 text-indigo-400" />
-                  핵심 SQL 및 C# 로직 코드 스니펫
-                </div>
-                {mod.code_snippets.map((snippet, idx) => (
-                  <div
-                    key={idx}
-                    className="rounded-2xl overflow-hidden border border-slate-800 bg-[#080b12]"
-                  >
-                    <div className="bg-[#121826] px-4 py-2.5 text-xs font-mono text-indigo-300 border-b border-slate-800 flex items-center justify-between">
-                      <span>Code Snippet #{idx + 1}</span>
-                      <span className="text-[10px] text-slate-500 uppercase">C# / SQL</span>
-                    </div>
-                    <pre className="p-5 font-mono text-sm text-indigo-100 overflow-x-auto leading-relaxed">
-                      <code>{snippet}</code>
-                    </pre>
-                  </div>
-                ))}
-              </div>
-            )}
+            {/* Render 1:1 Original HTML Content with original-html-scope */}
+            <div
+              className="original-html-scope"
+              dangerouslySetInnerHTML={{ __html: mod.body_html || mod.full_html }}
+            />
           </article>
         </div>
       </div>
